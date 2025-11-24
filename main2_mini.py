@@ -128,50 +128,22 @@ async def process_model(model_name, base_url):
     sc = "result_new/" + model_name + '/' + "dsv3_score_psyeval3-plus.jsonl"
     print(f"Output file: {filename2}")
     # Initialize components
-    duplicater = Duplicater(tokenizer_path="/data/jcxy/llm_model/Qwen2.5-7B-Instruct", sensitive_words="")
+    duplicater = Duplicater(tokenizer_path="Qwen2.5-7B-Instruct", sensitive_words="")
     # Initialize LLM core with the current model
     llm = LLM_Core(
         duplicater.tokenizer,
         use_async=True,
         api_model=model_name,
-        #base_url="http://172.21.30.232:20012/v1",
         base_url=base_url,
         api_key='EMPTY'
     )
-    # llm2 = LLM_Core(
-    #     duplicater.tokenizer,
-    #     use_llm=False,
-    #     use_async=True,
-    #     batch=True,
-    #     api_model="ep-bi-20250307133052-cgnrr",
-    # )
-    # llm = LLM_Core(
-    #     duplicater.tokenizer,
-    #     api_model=model_name,#deepseek-v3-241226 doubao-1-5-pro-32k-250115 deepseek-r1-250120 
-    #     base_url="https://jeniya.cn/v1",
-    #     api_key="sk-ABO5lKLWqstTVvn0aRRmQ9GsnsnNl6JOubxPgfEhA6wtclTO"
-    # )
-    # # Use DeepSeek as the evaluator model
-    # llm2 = LLM_Core(
-    #     duplicater.tokenizer,
-    #     use_llm=False,
-          #use_async=True,
-    #     api_model="deepseek-v3-241226",
-    # )
+
     llm2 = LLM_Core(
         duplicater.tokenizer,
         api_model="deepseek-v3-241226",#deepseek-v3-241226 doubao-1-5-pro-32k-250115 deepseek-r1-250120 
         base_url="https://ark.cn-beijing.volces.com/api/v3",
-        api_key='5978dfed-9209-4a1f-a7aa-1e701822b567'
+        api_key='XXXXXXXXXXXXXXXXXXXXXX'
     )
-    # # Use DeepSeek as the evaluator model
-    # llm2 = LLM_Core(
-    #     duplicater.tokenizer,
-    #     use_llm=False,
-    #     use_async=True,
-    #     batch=True,
-    #     api_model="ep-bi-20250407100840-jkgck",
-    # )
     
     # Initialize tools and controllers
     tools = Tools(filename, duplicater.tokenizer)
