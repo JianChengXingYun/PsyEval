@@ -42,7 +42,7 @@ MODELS = [
 ]
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--inputmodel", default="PsyLLMV4_5-Kairosa-251121-Instruct-SFT-GLM", type=str, help="Specific model to process or 'all' for all models")
+parser.add_argument("--inputmodel", default="gpt-4.1", type=str, help="Specific model to process or 'all' for all models")
 parser.add_argument("--base_url", default="http://localhost:6012/v1", type=str)
 parser.add_argument("--filename", default="sampled_2000_Counseling_Report_DPO_Tag.jsonl", type=str)
 args = parser.parse_args()
